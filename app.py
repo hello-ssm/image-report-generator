@@ -1,4 +1,3 @@
-from smolagents import tool
 from fpdf import FPDF
 from openpyxl import Workbook
 from openpyxl.drawing.image import Image as XLImage
@@ -7,7 +6,6 @@ import datetime
 import gradio as gr
 
 
-@tool
 def generate_document_tool(image_paths: list[str], descriptions: list[str], output_format: str) -> str:
     """Generates a PDF or Excel document combining multiple images, each with its own text description.
     Args:
