@@ -5,6 +5,8 @@ import os
 import datetime
 import gradio as gr
 
+CJK_FONT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "NotoSansCJK-Regular.ttc")
+
 
 def generate_document_tool(image_paths: list[str], descriptions: list[str], output_format: str) -> str:
     """Generates a PDF or Excel document combining multiple images, each with its own text description.
@@ -22,7 +24,8 @@ def generate_document_tool(image_paths: list[str], descriptions: list[str], outp
     if output_format == "pdf":
         output_path = f"report_{timestamp}.pdf"
         pdf = FPDF()
-        pdf.set_font("Helvetica", size=12)
+        pdf.add_font("NotoSansSC", fname=CJK_FONT_PATH, collection_font_number=2)
+        pdf.set_font("NotoSansSC", size=12)
         for image_path, description in zip(image_paths, descriptions):
             pdf.add_page()
             pdf.multi_cell(0, 10, description)
