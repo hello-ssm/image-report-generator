@@ -4,6 +4,9 @@ from openpyxl.drawing.image import Image as XLImage
 import os
 import datetime
 import gradio as gr
+from pillow_heif import register_heif_opener
+
+register_heif_opener()  # allow PIL/fpdf2/openpyxl to decode iPhone HEIC/HEIF photos
 
 CJK_FONT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "NotoSansCJK-Regular.ttc")
 
